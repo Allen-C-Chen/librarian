@@ -1,25 +1,26 @@
 package com.smoothstack.lms.librarian.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tbl_library_branch")
 public class LibraryBranch {
-	private int branchID; //Primary Key, Not Null
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //auto
+	private Integer branchID;
+    @Column(name = "branchName")
 	private String branchName;
+    @Column(name = "branchAddress")
 	private String branchAddress;
-	
-	
-	
-	public LibraryBranch(int branchID, String branchName, String branchAddress) {
-		super();
-		this.branchID = branchID;
-		this.branchName = branchName;
-		this.branchAddress = branchAddress;
-	}
-	public LibraryBranch() {
-		// TODO Auto-generated constructor stub
-	}
-	public int getBranchID() {
+	public Integer getBranchID() {
 		return branchID;
 	}
-	public void setBranchID(int branchID) {
+	public void setBranchID(Integer branchID) {
 		this.branchID = branchID;
 	}
 	public String getBranchName() {
@@ -34,14 +35,6 @@ public class LibraryBranch {
 	public void setBranchAddress(String branchAddress) {
 		this.branchAddress = branchAddress;
 	}
-	public String printNameAndAddress() {
-		return branchName+", " +branchAddress;
-	}
-	@Override
-	public String toString() {
-		return "LibraryBranch [branchID=" + branchID + ", branchName=" + branchName + ", branchAddress=" + branchAddress
-				+ "]";
-	}
-	
-	
+
+    
 }

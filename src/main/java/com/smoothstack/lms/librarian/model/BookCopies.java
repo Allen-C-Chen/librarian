@@ -1,45 +1,28 @@
 package com.smoothstack.lms.librarian.model;
 
-public class BookCopies {
-	//private int bookId; //Primary Key, Not Null
-	//private int branchId; //Primary Key, Not Null
-	private Book book;
-	private LibraryBranch libraryBranch;
-	private int noOfCopies;
-	
-	public BookCopies(Book book, LibraryBranch libraryBranch, int noOfCopies) {
-		super();
-		this.book = book;
-		this.libraryBranch = libraryBranch;
-		this.noOfCopies = noOfCopies;
-	}
-	
-	public BookCopies() {
-		// TODO Auto-generated constructor stub
-	}
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-	public Book getBook() {
-		return book;
+@Entity
+@Table(name = "tbl_book_copies")
+public class BookCopies {
+	@EmbeddedId
+	private BookCopiesID id;	
+    @Column(name = "noOfCopies")
+	private Integer noOfCopies;
+	public BookCopiesID getBookCopiesID() {
+		return id;
 	}
-	public void setBook(Book book) {
-		this.book = book;
+	public void setBookCopiesID(BookCopiesID bookCopiesID) {
+		this.id = bookCopiesID;
 	}
-	public LibraryBranch getLibraryBranch() {
-		return libraryBranch;
-	}
-	public void setLibraryBranch(LibraryBranch libraryBranch) {
-		this.libraryBranch = libraryBranch;
-	}
-	public int getNoOfCopies() {
+	public Integer getNoOfCopies() {
 		return noOfCopies;
 	}
-	public void setNoOfCopies(int noOfCopies) {
+	public void setNoOfCopies(Integer noOfCopies) {
 		this.noOfCopies = noOfCopies;
 	}
-
-	@Override
-	public String toString() {
-		return "bookCopies [book=" + book.getTitle() + ", libraryBranch=" + libraryBranch.getBranchName() + ", noOfCopies=" + noOfCopies + "]";
-	}
-
+    
 }
